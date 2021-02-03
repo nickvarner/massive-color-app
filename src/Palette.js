@@ -17,12 +17,32 @@ class Palette extends Component {
     }
     render() {
         const {colors} = this.props.palette;
-        const colorBoxes = colors[this.state.level].map(color => (
+        const {level} = this.state;
+        const colorBoxes = colors[level].map(color => (
             <ColorBox background={color.hex} name={color.name} />
         ))
         return (
             <div className="Palette">
-                <Slider defaultValue={this.state.level} min={100} max={900} onAfterChange={this.changeLevel} step={100} />
+                <div className="slider">
+                <Slider
+                    defaultValue={level}
+                    min={100}
+                    max={900}
+                    onAfterChange={this.changeLevel}
+                    step={100}
+                    trackStyle={{ backgroundColor: 'transparent' }}
+                    handleStyle={{
+                        borderColor: 'green',
+                        height: 13,
+                        width: 13,
+                        marginLeft: -7,
+                        marginTop: -3,
+                        backgroundColor: 'green',
+                        boxShadow: 'none'
+                    }}
+                    railStyle={{height: 8}}
+                />                
+                </div>
                 {/* navbar goes here */}
                 <div className="Palette-colors">
                     {colorBoxes}
