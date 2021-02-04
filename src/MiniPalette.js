@@ -13,9 +13,11 @@ const styles = {
         }
     }, 
     colors: {
-        background: "grey",
+        background: "#dae1e4",
         height: "150px",
-        width: "100%"
+        width: "100%",
+        borderRadius: "5px",
+        overflow: "hidden"
 
     },
     title: {

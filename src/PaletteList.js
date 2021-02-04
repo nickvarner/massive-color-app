@@ -17,7 +17,6 @@ const styles = {
         alignItems: "flex-start",
         flexDirection: "column",
         flexWrap: "wrap",
-        border: "1px solid white"
     },
     nav: {
         display: "flex",
