@@ -15,28 +15,30 @@ class ColorBox extends Component {
         });
     }
     render() {
-        const {name, background, id, paletteId} = this.props;
+        const {name, background, id, paletteId, showLink} = this.props;
         const {copied} = this.state;
         return (
             <CopyToClipboard text={background} onCopy={this.changeCopyState}>
                 <div className="ColorBox" style={{ background }}>
-                <div
-                    style={{ background }}
-                    className={`copy-overlay ${copied && "show"}`}
-                />
-                <div className={`copy-msg ${copied && "show"}`}>
-                    <h1>copied</h1>
-                    <p>{this.props.background}</p>
-                </div>
+                    <div
+                        style={{ background }}
+                        className={`copy-overlay ${copied && "show"}`}
+                    />
+                    <div className={`copy-msg ${copied && "show"}`}>
+                        <h1>copied</h1>
+                        <p>{this.props.background}</p>
+                    </div>
                     <div className="copy-container">
                         <div className="box-content">
                             <span>{name}</span>
                         </div>
                         <button className="copy-button" >copy</button>
                     </div>
-                    <Link to={`/palette/${paletteId}/${id}`} onClick={e => e.stopPropagation()}>
-                        <span className="see-more">more</span>
-                    </Link>
+                    {showLink && (
+                        <Link to={`/palette/${paletteId}/${id}`} onClick={e => e.stopPropagation()}>
+                            <span className="see-more">more</span>
+                        </Link>
+                    )}
                 </div>
             </CopyToClipboard>
         )
