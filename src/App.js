@@ -20,7 +20,7 @@ const App = () => {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/palette/new" render={routeProps => <NewPaletteForm savePalette={savePalette} {...routeProps} /> } />
+        <Route exact path="/palette/new" render={routeProps => <NewPaletteForm savePalette={savePalette} palettes={palettes} {...routeProps} /> } />
         <Route exact path="/" render={routeProps => <PaletteList palettes={palettes} {...routeProps} />} />
         <Route exact path="/palette/:id" render={routeProps => <Palette palette={generatePalette(findPalette(routeProps.match.params.id))} /> }/>
         <Route exact path="/palette/:paletteId/:colorId" render={routeProps => <SingleColorPalette colorId={routeProps.match.params.colorId} palette={generatePalette(findPalette(routeProps.match.params.paletteId))} />} />
