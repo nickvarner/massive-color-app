@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Select from "@material-ui/core/Select"
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css'
-import './Navbar.css'
+import './Styles/Navbar.css'
 import { MenuItem, Snackbar } from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
