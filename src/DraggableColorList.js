@@ -7,7 +7,7 @@ import DraggableColorBox from './DraggableColorBox';
     return (
         <div style={{ height: "100%" }}>
             {colors.map((color, i) => 
-                <DraggableColorBox color={color.color} name={color.name} handleClick={() => removeColor(color.name)} key={color.name} index={i} />)}
+                <DraggableColorBox color={color.color} name={color.name} handleClick={() => removeColor(color.name)} key={color.name} index={i} colors={colors} />)}
         </div>
     )
 })
