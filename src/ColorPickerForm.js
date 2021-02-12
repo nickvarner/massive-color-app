@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
+import { makeStyles } from '@material-ui/core/styles';
 import { ChromePicker } from 'react-color';
 import Button from '@material-ui/core/Button'
 
+const useStyles = makeStyles((theme) => ({
+    ColorPickerForm: {
+        width: "100%"
+    },
+    picker: {
+        marginTop: "2rem"
+    },
+    addColor: {
+        width: "100%",
+        padding: "1rem",
+        marginTop: "1rem",
+        fontSize: "2rem"
+    },
+    colorNameInput: {
+        width: "100%",
+        height: "70px",
+
+    }
+}))
+
 const ColorPickerForm = (props) => {
+    const classes = useStyles();
     const {paletteFull, createColor, colors, palettes} = props;
     const [currentColor, setCurrentColor] = useState('teal');
     const [newColorName, setNewColorName] = useState('');
@@ -40,11 +62,15 @@ const ColorPickerForm = (props) => {
         });
     });
     return (
-        <div className="ColorPickerForm">
-            <ChromePicker color={currentColor} onChangeComplete={onChangeComplete} />
+        <div className={classes.ColorPickerForm}>
+            <ChromePicker color={currentColor} onChangeComplete={onChangeComplete} className={classes.picker} width='100%' />
             <ValidatorForm onSubmit={handleSubmit}>
                 <TextValidator 
-                    value={newColorName} 
+                    value={newColorName}
+                    className={classes.colorNameInput}
+                    placeholder="color name"
+                    variant="filled"
+                    margin="normal"
                     onChange={handleColorChange} 
                     validators={[
                         'required',
@@ -56,7 +82,7 @@ const ColorPickerForm = (props) => {
                         'color name must be unique',
                         'color already used'
                     ]} />
-                <Button variant="contained" color="primary" type="submit" style={{backgroundColor: currentColor}} disabled={paletteFull} >{paletteFull ? 'palette full' : 'add color'}</Button>
+                <Button className={classes.addColor} variant="contained" color="primary" type="submit" style={{backgroundColor: currentColor}} disabled={paletteFull} >{paletteFull ? 'palette full' : 'add color'}</Button>
             </ValidatorForm>
         </div>
     )
