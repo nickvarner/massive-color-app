@@ -25,42 +25,42 @@ const PaletteFormNav = (props) => {
     }
     return (
         <div>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          color="default"
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}
-        >
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, open && classes.hide)}
+            <CssBaseline />
+            <AppBar
+                position="fixed"
+                color="default"
+                className={clsx(classes.appBar, {
+                    [classes.appBarShift]: open,
+                })}
             >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap>
-              Persistent drawer
-            </Typography>
-            <ValidatorForm onSubmit={() => props.savePalette(newPaletteName)}>
-                <TextValidator 
-                    value={newPaletteName} 
-                    label="palette name" 
-                    onChange={handlePaletteChange} 
-                    validators={['required', 'isPaletteNameUnique']}
-                    errorMessages={['enter palette name', 'palette name must be unique']}
-                />
-                <Button variant="contained" color="primary" type="submit" >save palette</Button>
-                <Link to="/">
-                  <Button variant="contained" color="secondary">go back</Button>
-                </Link>
-            </ValidatorForm>
-          </Toolbar>
-        </AppBar>
+                <Toolbar>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        edge="start"
+                        className={clsx(classes.menuButton, open && classes.hide)}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" noWrap>
+                        Persistent drawer
+                    </Typography>
+                    <ValidatorForm onSubmit={() => props.savePalette(newPaletteName)}>
+                        <TextValidator 
+                            value={newPaletteName} 
+                            label="palette name" 
+                            onChange={handlePaletteChange} 
+                            validators={['required', 'isPaletteNameUnique']}
+                            errorMessages={['enter palette name', 'palette name must be unique']}
+                        />
+                        <Button variant="contained" color="primary" type="submit" >save palette</Button>
+                        <Link to="/">
+                            <Button variant="contained" color="secondary">go back</Button>
+                        </Link>
+                    </ValidatorForm>
+                </Toolbar>
+            </AppBar>
         </div>
     )
 }

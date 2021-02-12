@@ -25,8 +25,6 @@ const styles = {
         left: "0px",
         bottom: "0px",
         padding: "10px",
-        color: props => 
-            chroma.contrast(props.color, "black") <= 6 ? "white" : "rgba(0,0,0,0.6)",
         letterSpacing: "1px",
         textTransform: "uppercase",
         fontSize: "12px"
@@ -37,11 +35,11 @@ const styles = {
 }
 
 const DraggableColorBox = SortableElement((props) => {
-
     const {classes, handleClick, color, name} = props;
+    const dynText = chroma.contrast(color, "black") <= 6 ? "white" : "rgba(0,0,0,0.6)"
     return (
         <div className={classes.root} style={{backgroundColor: color}}>
-            <div className={classes.boxContent}>
+            <div className={classes.boxContent} style={{color: dynText}}>
                 <span>{name}</span>
                 <DeleteIcon className={classes.deleteIcon} onClick={handleClick} />
             </div>
