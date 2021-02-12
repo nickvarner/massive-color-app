@@ -1,18 +1,19 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
+import {Picker} from 'emoji-mart'
+import 'emoji-mart/css/emoji-mart.css'
 
 
 export default function PaletteMetaForm(props) {
     const [open, setOpen] = React.useState(true);
     const [newPaletteName, setNewPaletteName] = React.useState('');
-    const {palettes} = props;
+    const {palettes, hideForm, savePalette} = props;
     React.useEffect(() => {
         ValidatorForm.addValidationRule('isPaletteNameUnique', value => {
             return palettes.every(
@@ -20,12 +21,9 @@ export default function PaletteMetaForm(props) {
             );
         });
         });
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
     const handleClose = () => {
         setOpen(false);
+        hideForm();
     };
     const handlePaletteChange = (evt) => {
         setNewPaletteName(evt.target.value)
@@ -34,11 +32,12 @@ export default function PaletteMetaForm(props) {
     return (
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">choose palette name</DialogTitle>
-            <ValidatorForm onSubmit={() => props.savePalette(newPaletteName)}>
+            <ValidatorForm onSubmit={() => savePalette(newPaletteName)}>
                 <DialogContent>
                     <DialogContentText>
                         enter a unique name for your new palette
                     </DialogContentText>
+                    <Picker />
                     <TextValidator 
                         value={newPaletteName} 
                         label="palette name"
@@ -48,7 +47,6 @@ export default function PaletteMetaForm(props) {
                         validators={['required', 'isPaletteNameUnique']}
                         errorMessages={['enter palette name', 'palette name must be unique']}
                     />
-
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import {Link} from 'react-router-dom'
-import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -55,6 +54,9 @@ const PaletteFormNav = (props) => {
     const showForm = () => {
         setFormShowing(true)
     }
+    const hideForm = () => {
+        setFormShowing(false)
+    }
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -88,7 +90,7 @@ const PaletteFormNav = (props) => {
                     </Button>
                 </div>
             </AppBar>
-            {formShowing && <PaletteMetaForm palettes={palettes} savePalette={savePalette} />}
+            {formShowing && <PaletteMetaForm palettes={palettes} savePalette={savePalette} hideForm={hideForm} />}
         </div>
     )
 }

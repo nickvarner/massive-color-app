@@ -6,8 +6,6 @@ import PaletteList from './PaletteList'
 import NewPaletteForm from './NewPaletteForm'
 import { generatePalette } from './ColorHelpers'
 import SingleColorPalette from './SingleColorPalette';
-import Button from '@material-ui/core/Button'
-
 
 const App = () => {
   const [palettes, setPalettes] = useState(seedColors)
@@ -21,8 +19,6 @@ const App = () => {
   }
   return (
     <div className="App">
-                      <Button onClick={() => console.log(palettes)}>click me</Button>
-
       <Switch>
         <Route exact path="/palette/new" render={routeProps => <NewPaletteForm savePalette={savePalette} palettes={palettes} {...routeProps} /> } />
         <Route exact path="/" render={routeProps => <PaletteList palettes={palettes} {...routeProps} />} />

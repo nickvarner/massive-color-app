@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import {ValidatorForm} from 'react-material-ui-form-validator'
 import arrayMove from 'array-move'
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
@@ -11,7 +10,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DraggableColorList from './DraggableColorList'
 import ColorPickerForm from './ColorPickerForm'
 import PaletteFormNav from './PaletteFormNav'
-import PaletteMetaForm from './PaletteMetaForm'
 import Button from '@material-ui/core/Button'
 
 const drawerWidth = 400;
