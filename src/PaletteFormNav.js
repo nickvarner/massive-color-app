@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
         }),
         flexDirection: "row",
         justifyContent: "space-between",
-        height: "64px"
+        height: "64px",
+        alignItems: "center"
       },
       appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -35,11 +36,25 @@ const useStyles = makeStyles((theme) => ({
       menuButton: {
         marginRight: theme.spacing(2),
       },
+      navBtns: {
+          marginRight: "1rem",
+          "& a": {
+              textDecoration: "none"
+          }
+
+      },
+      btn: {
+          margin: "0 0.5rem",
+      }
 }));
 
 const PaletteFormNav = (props) => {
+    const [formShowing, setFormShowing] = useState(false)
     const classes = useStyles();
     const {open, palettes, handleDrawerOpen, savePalette} = props;
+    const showForm = () => {
+        setFormShowing(true)
+    }
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -64,13 +79,16 @@ const PaletteFormNav = (props) => {
                         create your own palette
                     </Typography>
                 </Toolbar>
-                <div className="classes navBtns">
-                    <PaletteMetaForm palettes={palettes} savePalette={savePalette} />
-                    <Link to="/">
-                        <Button variant="contained" color="secondary">go back</Button>
+                <div className={classes.navBtns}>
+                    <Link to="/" className={classes.link}>
+                        <Button className={classes.btn} variant="contained" color="secondary">go back</Button>
                     </Link>
+                    <Button className={classes.btn} variant="contained" color="primary" onClick={showForm}>
+                        save palette
+                    </Button>
                 </div>
             </AppBar>
+            {formShowing && <PaletteMetaForm palettes={palettes} savePalette={savePalette} />}
         </div>
     )
 }
