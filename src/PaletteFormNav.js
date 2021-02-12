@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button'
+import PaletteMetaForm from './PaletteMetaForm';
 
 const drawerWidth = 400;
 
@@ -38,18 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PaletteFormNav = (props) => {
     const classes = useStyles();
-    const [newPaletteName, setNewPaletteName] = useState('');
-    const {open, palettes, handleDrawerOpen} = props;
-    useEffect(() => {
-        ValidatorForm.addValidationRule('isPaletteNameUnique', value => {
-            return palettes.every(
-                ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-            );
-        });
-    });
-    const handlePaletteChange = (evt) => {
-        setNewPaletteName(evt.target.value)
-    }
+    const {open, palettes, handleDrawerOpen, savePalette} = props;
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -75,20 +65,11 @@ const PaletteFormNav = (props) => {
                     </Typography>
                 </Toolbar>
                 <div className="classes navBtns">
-                        <ValidatorForm onSubmit={() => props.savePalette(newPaletteName)}>
-                            <TextValidator 
-                                value={newPaletteName} 
-                                label="palette name" 
-                                onChange={handlePaletteChange} 
-                                validators={['required', 'isPaletteNameUnique']}
-                                errorMessages={['enter palette name', 'palette name must be unique']}
-                            />
-                            <Button variant="contained" color="primary" type="submit" >save palette</Button>
-                        </ValidatorForm>
-                        <Link to="/">
-                            <Button variant="contained" color="secondary">go back</Button>
-                        </Link>
-                    </div>
+                    <PaletteMetaForm palettes={palettes} savePalette={savePalette} />
+                    <Link to="/">
+                        <Button variant="contained" color="secondary">go back</Button>
+                    </Link>
+                </div>
             </AppBar>
         </div>
     )
