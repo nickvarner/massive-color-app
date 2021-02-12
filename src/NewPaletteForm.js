@@ -19,23 +19,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+  
   hide: {
     display: 'none',
   },
@@ -80,13 +64,6 @@ const NewPaletteForm = (props) => {
     const [open, setOpen] = useState(true);
     const [colors, setColors] = useState(props.palettes[0].colors);
     const paletteFull = colors.length >= maxColors;
-    useEffect(() => {
-        ValidatorForm.addValidationRule('isPaletteNameUnique', value => {
-            return props.palettes.every(
-                ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-            );
-        });
-    });
   
     const handleDrawerOpen = () => {
       setOpen(true);
@@ -123,7 +100,7 @@ const NewPaletteForm = (props) => {
     }
     return (
       <div className={classes.root}>
-        <PaletteFormNav open={open} classes={classes} palettes={props.palettes} handleDrawerOpen={handleDrawerOpen} savePalette={savePalette} paletteFull={paletteFull} />
+        <PaletteFormNav open={open} palettes={props.palettes} handleDrawerOpen={handleDrawerOpen} savePalette={savePalette} paletteFull={paletteFull} />
         <Drawer
           className={classes.drawer}
           variant="persistent"

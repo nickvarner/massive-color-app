@@ -19,15 +19,15 @@ const styles = {
     },
     boxContent: {
         position: "absolute",
-        display: "flex",
-        justifyContent: "space-between",
         width: "100%",
         left: "0px",
         bottom: "0px",
         padding: "10px",
         letterSpacing: "1px",
         textTransform: "uppercase",
-        fontSize: "12px"
+        fontSize: "12px",
+        display: "flex",
+        justifyContent: "space-between"
     },
     deleteIcon: {
         transition: "all 0.3s ease-in-out"
