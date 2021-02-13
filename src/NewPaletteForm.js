@@ -87,9 +87,8 @@ const NewPaletteForm = (props) => {
     const handleDrawerClose = () => {
       setOpen(false);
     };
-    const savePalette = (newPaletteName) => {
-        const newName = newPaletteName
-        const newPalette = {paletteName: newName, id: newName.toLowerCase().replace(/ /g, '-'), colors: colors};
+    const savePalette = (newPalette) => {
+        newPalette.colors = colors;
         props.savePalette(newPalette);
         props.history.push('/');
     }
