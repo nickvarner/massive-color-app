@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import { Link } from 'react-router-dom';
-import chroma from 'chroma-js';
 import { withStyles } from '@material-ui/styles';
 import "./Styles/ColorBox.css"
-
-const styles = {
-    dynText: {
-        color: props => 
-            chroma.contrast(props.background, "black") <= 6 ? "white" : "rgba(0,0,0,0.6)"
-    }
-}
+import styles from "./Styles/ColorBoxStyles"
 
 class ColorBox extends Component {
     constructor(props) {
@@ -28,7 +21,7 @@ class ColorBox extends Component {
         const {copied} = this.state;
         return (
             <CopyToClipboard text={background} onCopy={this.changeCopyState}>
-                <div className="ColorBox" style={{ background }}>
+                <div className={`${classes.ColorBox} ColorBox`} style={{ background }}>
                     <div
                         style={{ background }}
                         className={`copy-overlay ${copied && "show"}`}
