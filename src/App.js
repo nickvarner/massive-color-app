@@ -15,11 +15,10 @@ const App = () => {
       return palette.id === id;
     })
   }
-  // const deletePalette = (id) => {
-  //   palettes.find(palette => {
-      
-  //   })
-  // }
+  const deletePalette = (id) => {
+    const newPalettes = palettes.filter(palette => palette.id !== id);
+    setPalettes(newPalettes)
+  }
   const savePalette =  (newPalette) => {
     setPalettes([...palettes, newPalette]);
   }
@@ -30,7 +29,7 @@ const App = () => {
     <div className="App">
       <Switch>
         <Route exact path="/palette/new" render={routeProps => <NewPaletteForm savePalette={savePalette} palettes={palettes} {...routeProps} /> } />
-        <Route exact path="/" render={routeProps => <PaletteList palettes={palettes} {...routeProps} />} />
+        <Route exact path="/" render={routeProps => <PaletteList palettes={palettes} {...routeProps} deletePalette={deletePalette} />} />
         <Route exact path="/palette/:id" render={routeProps => <Palette palette={generatePalette(findPalette(routeProps.match.params.id))} /> }/>
         <Route exact path="/palette/:paletteId/:colorId" render={routeProps => <SingleColorPalette colorId={routeProps.match.params.colorId} palette={generatePalette(findPalette(routeProps.match.params.paletteId))} />} />
       </Switch>

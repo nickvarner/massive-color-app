@@ -12,7 +12,8 @@ const styles = {
         }
     },
     boxContent: {
-        position: "absolute",
+        //for some reason this adds a white bar margin/padding, leaving it off for now
+        // position: "absolute",
         width: "100%",
         lineHeight: "normal",
         left: "0px",
