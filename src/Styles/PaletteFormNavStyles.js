@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
         height: "64px",
         alignItems: "center"
       },
+      hide: {
+        display: 'none',
+      },
       appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
@@ -29,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
           "& a": {
               textDecoration: "none"
           }
-
       },
       btn: {
           margin: "0 0.5rem",
