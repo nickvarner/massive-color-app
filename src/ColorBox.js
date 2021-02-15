@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
-import "./Styles/ColorBox.css"
 import styles from "./Styles/ColorBoxStyles"
 
 class ColorBox extends Component {
@@ -17,31 +16,31 @@ class ColorBox extends Component {
         });
     }
     render() {
-        const {name, background, id, paletteId, showLink, classes} = this.props;
+        const {name, background, id, paletteId, showingFullPalette, classes} = this.props;
         const {copied} = this.state;
         return (
             <CopyToClipboard text={background} onCopy={this.changeCopyState}>
-                <div className={`${classes.ColorBox} ColorBox`} style={{ background }}>
+                <div className={classes.ColorBox} style={{ background }}>
                     <div
                         style={{ background }}
-                        className={`copy-overlay ${copied && "show"}`}
+                        className={`${classes.copyOverlay} ${copied && classes.showOverlay}`}
                     />
-                    <div className={`copy-msg ${copied && "show"}`}>
+                    <div className={`${classes.copyMsg} ${copied && classes.showMsg}`}>
                         <h1>copied</h1>
                         <p 
-                            className={classes.dynText}
+                            className={classes.copyText}
                             >{this.props.background}
                         </p>
                     </div>
-                    <div className="copy-container">
-                        <div className="box-content">
-                            <span className={classes.dynText} >{name}</span>
+                    <div>
+                        <div className={classes.boxContent}>
+                            <span className={classes.colorName} >{name}</span>
                         </div>
-                        <button className={`copy-button ${classes.dynText}`} >copy</button>
+                        <button className={classes.copyBtn} >copy</button>
                     </div>
-                    {showLink && (
+                    {showingFullPalette && (
                         <Link to={`/palette/${paletteId}/${id}`} onClick={e => e.stopPropagation()}>
-                            <span className={`see-more ${classes.dynText}`}>more</span>
+                            <span className={classes.seeMore}>more</span>
                         </Link>
                     )}
                 </div>
