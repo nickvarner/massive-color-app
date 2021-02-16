@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import clsx from 'clsx';
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import styles from "./Styles/ColorBoxStyles"
-import clsx from 'clsx';
 
 class ColorBox extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ class ColorBox extends Component {
                         <h1>copied</h1>
                         <p 
                             className={classes.copyText}
-                            >{this.props.background}
+                            >{background}
                         </p>
                     </div>
                     <div>

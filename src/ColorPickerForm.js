@@ -1,28 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
-import { makeStyles } from '@material-ui/core/styles';
-import { ChromePicker } from 'react-color';
 import Button from '@material-ui/core/Button'
-
-const useStyles = makeStyles((theme) => ({
-    ColorPickerForm: {
-        width: "100%"
-    },
-    picker: {
-        marginTop: "2rem"
-    },
-    addColor: {
-        width: "100%",
-        padding: "1rem",
-        marginTop: "1rem",
-        fontSize: "2rem"
-    },
-    colorNameInput: {
-        width: "100%",
-        height: "70px",
-
-    }
-}))
+import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
+import { ChromePicker } from 'react-color';
+import useStyles from './Styles/ColorPickerFormStyles'
 
 const ColorPickerForm = (props) => {
     const classes = useStyles();
@@ -62,7 +42,7 @@ const ColorPickerForm = (props) => {
         });
     });
     return (
-        <div className={classes.ColorPickerForm}>
+        <div className={classes.ColorPickerForm} >
             <ChromePicker color={currentColor} onChangeComplete={onChangeComplete} className={classes.picker} width='100%' />
             <ValidatorForm onSubmit={handleSubmit}>
                 <TextValidator 

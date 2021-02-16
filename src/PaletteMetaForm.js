@@ -10,7 +10,7 @@ import {Picker} from 'emoji-mart'
 import 'emoji-mart/css/emoji-mart.css'
 
 
-export default function PaletteMetaForm(props) {
+ const PaletteMetaForm = (props) => {
     const [stage, setStage] = React.useState('form')
     const [newPaletteName, setNewPaletteName] = React.useState('');
     const {palettes, hideForm, savePalette} = props;
@@ -32,7 +32,6 @@ export default function PaletteMetaForm(props) {
         savePalette(newPalette)
         setStage('')
     }
-
     return (
         <div>
         <Dialog open={stage === "emoji"} onClose={hideForm}>
@@ -67,3 +66,5 @@ export default function PaletteMetaForm(props) {
         </div>
     );
     }
+
+    export default PaletteMetaForm;

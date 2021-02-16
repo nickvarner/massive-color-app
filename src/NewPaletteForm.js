@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import clsx from 'clsx';
 import arrayMove from 'array-move'
+import Button from '@material-ui/core/Button'
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -9,7 +10,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DraggableColorList from './DraggableColorList'
 import ColorPickerForm from './ColorPickerForm'
 import PaletteFormNav from './PaletteFormNav'
-import Button from '@material-ui/core/Button'
 import useStyles from './Styles/NewPaletteFormStyles'
 
 const NewPaletteForm = (props) => {

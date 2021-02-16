@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import Select from "@material-ui/core/Select"
 import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css'
 import { MenuItem, Snackbar } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
-import styles from './Styles/NavBarStyles'
-import {Link} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import {Link} from 'react-router-dom';
+import 'rc-slider/assets/index.css'
+import styles from './Styles/NavBarStyles'
 
 class Navbar extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class Navbar extends Component {
     }
     render() {
         const {level, changeLevel, showingAllColors, classes } = this.props;
-        const {format} = this.state;
+        const {format, open} = this.state;
         return (
             <header className={classes.Navbar}>
                 <div className={classes.logo}>
@@ -63,7 +63,7 @@ class Navbar extends Component {
                     </div>
                     <Snackbar 
                         anchorOrigin={{ vertical: "bottom", horizontal: "left"}} 
-                        open={this.state.open} 
+                        open={open} 
                         autoHideDuration={3000} 
                         message={<span id="message id">format changed to {format}</span>}
                         ContentProps={{
