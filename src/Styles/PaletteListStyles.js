@@ -1,7 +1,6 @@
 import sizes from './sizes'
 import bg from './bg.svg'
 
-
 const styles = {
     root: {
         backgroundColor: "#6883bc",
