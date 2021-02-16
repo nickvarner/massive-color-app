@@ -12,6 +12,9 @@ const styles = {
         backgroundImage: `url(${bg})`,
         overflow: "scroll"
     }, 
+    heading: {
+        fontSize: "2rem"
+    },
     container: {
         width: "50%",
         display: "flex",
