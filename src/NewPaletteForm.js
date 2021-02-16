@@ -11,13 +11,14 @@ import DraggableColorList from './DraggableColorList'
 import ColorPickerForm from './ColorPickerForm'
 import PaletteFormNav from './PaletteFormNav'
 import useStyles from './Styles/NewPaletteFormStyles'
+import seedColors from './seedColors'
 
 const NewPaletteForm = (props) => {
   //how to use default props with functional react component below
     const {maxColors = '20'} = props;
     const classes = useStyles();
     const [open, setOpen] = useState(true);
-    const [colors, setColors] = useState(props.palettes[0].colors);
+    const [colors, setColors] = useState(seedColors[0].colors);
     const paletteFull = colors.length >= maxColors;
   
     const handleDrawerOpen = () => {
