@@ -18,7 +18,7 @@ const styles = {
             width: "25%",
             height: props => (props.showingFullPalette ? "20%" : "33.3333%")
         },
-        [sizes.down("md")]: {
+        [sizes.down("med")]: {
             width: "50%",
             height: props => (props.showingFullPalette ? "10%" : "20%")
         },
