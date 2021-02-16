@@ -1,6 +1,5 @@
 import { withStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete'
-import {useEffect} from 'react'
 
 const styles = {
     root: {
@@ -60,12 +59,11 @@ const styles = {
 }
 
 const MiniPalette = (props) => {
-    const { classes, paletteName, emoji, colors, id, deletePalette } = props;
+    const { classes, paletteName, emoji, colors, id, deletePaletteDialog } = props;
     const handleClick = (evt) => {
         evt.stopPropagation()
-        deletePalette(id)
+        deletePaletteDialog(id)
     }
-    // rerender bc trashcan isnt showing up
 
     const miniColorBoxes = colors.map(color => (
         <div className={classes.miniColor} style={{ backgroundColor: color.color }} key={color.name} />))
