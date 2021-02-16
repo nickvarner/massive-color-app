@@ -6,7 +6,7 @@ import useStyles from './Styles/ColorPickerFormStyles'
 
 const ColorPickerForm = (props) => {
     const classes = useStyles();
-    const {paletteFull, createColor, colors, palettes} = props;
+    const {paletteFull, createColor, colors} = props;
     const [currentColor, setCurrentColor] = useState('teal');
     const [newColorName, setNewColorName] = useState('');
     const onChangeComplete = (newColor) => {
@@ -19,14 +19,7 @@ const ColorPickerForm = (props) => {
         const newColor = { color: currentColor, name: newColorName};
         createColor(newColor);
         setNewColorName('');
-        changeToRandom();
     }
-    const changeToRandom = () => {
-        const allColors = palettes.map(p => p.colors).flat();
-        let rand = Math.floor(Math.random() * allColors.length);
-        const newColor = allColors[rand];
-        onChangeComplete(newColor);
-      }
     useEffect(() => {
         ValidatorForm.addValidationRule('isColorNameUnique', value => {
             return colors.every(
@@ -44,7 +37,7 @@ const ColorPickerForm = (props) => {
     return (
         <div className={classes.ColorPickerForm} >
             <ChromePicker color={currentColor} onChangeComplete={onChangeComplete} className={classes.picker} width='100%' />
-            <ValidatorForm onSubmit={handleSubmit}>
+            <ValidatorForm onSubmit={handleSubmit} instantValidate={false}>
                 <TextValidator 
                     value={newColorName}
                     className={classes.colorNameInput}

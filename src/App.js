@@ -37,6 +37,7 @@ const App = () => {
               <Route exact path="/" render={routeProps => ( <Page> <PaletteList palettes={palettes} {...routeProps} deletePalette={deletePalette} /> </Page>)} /> 
               <Route exact path="/palette/:paletteId/:colorId" render={routeProps => ( <Page> <SingleColorPalette colorId={routeProps.match.params.colorId} palette={generatePalette(findPalette(routeProps.match.params.paletteId))} /> </Page>)} /> 
               <Route exact path="/palette/:id" render={routeProps => ( <Page> <Palette palette={generatePalette(findPalette(routeProps.match.params.id))} /> </Page> )}/> 
+              <Route render={routeProps => ( <Page> <PaletteList palettes={palettes} {...routeProps} deletePalette={deletePalette} /> </Page>)} /> 
             </Switch>
           </CSSTransition>
         </TransitionGroup>
