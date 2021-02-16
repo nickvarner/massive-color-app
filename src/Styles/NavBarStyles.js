@@ -27,7 +27,7 @@ const styles = {
         width: "340px",
         margin: "0 10px",
         display: "inline-block",
-        [sizes.down("med")]: {
+        [sizes.down("sm")]: {
             width: "150px"
         }
     },

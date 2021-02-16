@@ -32,34 +32,4 @@ class MiniPalette extends PureComponent {
     }
 }
 
-
-// const MiniPalette = React.memo(({ classes, paletteName, emoji, colors, id, deletePaletteDialog, sendToPalette }) => {
-//     // const { classes, paletteName, emoji, colors, id, deletePaletteDialog } = props;
-//     const handleClick = (evt) => {
-//         evt.stopPropagation()
-//         deletePaletteDialog(id)
-//     }
-//     const goToPalette = () => {
-//         sendToPalette(id)
-//     }
-//     console.log('rerendering', paletteName)
-//     const miniColorBoxes = colors.map(color => (
-//         <div className={classes.miniColor} style={{ backgroundColor: color.color }} key={color.name} />))
-//     return (
-
-//         <div className={classes.root} onClick={goToPalette}>
-//             <DeleteIcon className={classes.deleteIcon} style={{transition: "all 0.3s ease-in-out"}} onClick={handleClick} />
-//             <div className={classes.colors}>
-//                 {miniColorBoxes}
-//             </div>
-//             <h5 className={classes.title}>{paletteName}<span className={classes.emoji}>{emoji}</span></h5>          
-//         </div>
-//     )
-// }, (prevProps, nextProps) => {
-//     if(prevProps.openDeleteDialog !== nextProps.openDeleteDialog) {
-//       return true
-//     }
-//     return false
-//   })
-
 export default withStyles(styles)(MiniPalette);
