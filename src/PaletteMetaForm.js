@@ -30,6 +30,7 @@ export default function PaletteMetaForm(props) {
     const saveEmoji = (newEmoji) => {
         const newPalette = {paletteName: newPaletteName, id: newPaletteName.toLowerCase().replace(/ /g, '-'), emoji: newEmoji.native };
         savePalette(newPalette)
+        setStage('')
     }
 
     return (
