@@ -24,6 +24,9 @@ const styles = {
     heading: {
         fontSize: "2rem"
     },
+    createPalette: {
+        fontSize: "1.5rem",
+    },
     container: {
         width: "50%",
         display: "flex",

@@ -14,7 +14,7 @@ import styles from './Styles/PaletteListStyles'
 const PaletteList = (props) => {
     const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false);
     const [deletingId, setDeletingId] = React.useState(null)
-    const {classes, palettes, deletePalette, id } = props;
+    const {classes, palettes, deletePalette} = props;
       const handleClose = () => {
         setOpenDeleteDialog(false);
         setDeletingId('')
@@ -36,11 +36,11 @@ const PaletteList = (props) => {
             <div className={classes.container}>
                 <nav className={classes.nav}>
                     <h1 className={classes.heading}>react colors</h1>
-                    <Link to="/palette/new">create palette</Link>
+                    <Link to="/palette/new" className={classes.createPalette}>create palette</Link>
                 </nav>
                 <TransitionGroup className={classes.palettes}>
                     {palettes.map(palette => (
-                        <CSSTransition key={palette.id} classNames="fade" timeout={500}><MiniPalette {...palette} deletePaletteDialog={deletePaletteDialog} handleClick={() => goToPalette(palette.id)} key={palette.id} id={palette.id} /></CSSTransition>
+                        <CSSTransition key={palette.id} classNames="fade" timeout={500}><MiniPalette {...palette} deletePaletteDialog={deletePaletteDialog} sendToPalette={goToPalette} key={palette.id} id={palette.id} /></CSSTransition>
                     ))}
                 </TransitionGroup>
             </div>

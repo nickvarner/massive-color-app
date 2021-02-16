@@ -1,81 +1,65 @@
 import { withStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete'
+import styles from './Styles/MiniPaletteStyles'
+import React, {PureComponent} from 'react'
 
-const styles = {
-    root: {
-        backgroundColor: "white",
-        border: "1px solid black",
-        borderRadius: "5px",
-        padding: "0.5rem",
-        position: "relative",
-        overflow: "hidden",
-        cursor: "pointer",
-        "&:hover svg": {
-            opacity: 1
-        }
-    }, 
-    colors: {
-        background: "#dae1e4",
-        height: "150px",
-        width: "100%",
-        borderRadius: "5px",
-        overflow: "hidden"
-
-    },
-    title: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        margin: "0",
-        color: "black",
-        paddingTop: "0.5rem",
-        fontSize: "1rem",
-        position: "relative"
-    },
-    emoji: {
-        marginLeft: "0.5rem",
-        fontSize: "1.5rem"
-    },
-    miniColor: {
-        height: "25%",
-        width: "20%",
-        display: "inline-block",
-        margin: "0 auto",
-        position: "relative",
-        marginBottom: "-3.5px",
-    },
-    deleteIcon: {
-        color: "white",
-        backgroundColor: "#eb3d30",
-        width: "20px",
-        height: "20px",
-        position: "absolute",
-        right: "0px",
-        top: "0px",
-        padding: "10px",
-        zIndex: 10,
-        opacity: 0
+class MiniPalette extends PureComponent {
+    constructor(props){
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+        this.goToPalette = this.goToPalette.bind(this);
+    };
+    handleClick(evt) {
+        evt.stopPropagation();
+        this.props.deletePaletteDialog(this.props.id);
     }
-}
-
-const MiniPalette = (props) => {
-    const { classes, paletteName, emoji, colors, id, deletePaletteDialog } = props;
-    const handleClick = (evt) => {
-        evt.stopPropagation()
-        deletePaletteDialog(id)
+    goToPalette() {
+        this.props.sendToPalette(this.props.id)
     }
-
-    const miniColorBoxes = colors.map(color => (
-        <div className={classes.miniColor} style={{ backgroundColor: color.color }} key={color.name} />))
-    return (
-        <div className={classes.root} onClick={props.handleClick}>
-            <DeleteIcon className={classes.deleteIcon} style={{transition: "all 0.3s ease-in-out"}} onClick={handleClick} />
-            <div className={classes.colors}>
-                {miniColorBoxes}
+    render() {
+        const { classes, paletteName, emoji, colors } = this.props;
+        const miniColorBoxes = colors.map(color => (
+            <div className={classes.miniColor} style={{ backgroundColor: color.color }} key={color.name} />));
+        return (
+            <div className={classes.root} onClick={this.goToPalette}>
+                <DeleteIcon className={classes.deleteIcon} style={{transition: "all 0.3s ease-in-out"}} onClick={this.handleClick} />
+                <div className={classes.colors}>
+                    {miniColorBoxes}
+                </div>
+                <h5 className={classes.title}>{paletteName}<span className={classes.emoji}>{emoji}</span></h5>          
             </div>
-            <h5 className={classes.title}>{paletteName}<span className={classes.emoji}>{emoji}</span></h5>          
-        </div>
-    )
+        )
+    }
 }
+
+
+// const MiniPalette = React.memo(({ classes, paletteName, emoji, colors, id, deletePaletteDialog, sendToPalette }) => {
+//     // const { classes, paletteName, emoji, colors, id, deletePaletteDialog } = props;
+//     const handleClick = (evt) => {
+//         evt.stopPropagation()
+//         deletePaletteDialog(id)
+//     }
+//     const goToPalette = () => {
+//         sendToPalette(id)
+//     }
+//     console.log('rerendering', paletteName)
+//     const miniColorBoxes = colors.map(color => (
+//         <div className={classes.miniColor} style={{ backgroundColor: color.color }} key={color.name} />))
+//     return (
+
+//         <div className={classes.root} onClick={goToPalette}>
+//             <DeleteIcon className={classes.deleteIcon} style={{transition: "all 0.3s ease-in-out"}} onClick={handleClick} />
+//             <div className={classes.colors}>
+//                 {miniColorBoxes}
+//             </div>
+//             <h5 className={classes.title}>{paletteName}<span className={classes.emoji}>{emoji}</span></h5>          
+//         </div>
+//     )
+// }, (prevProps, nextProps) => {
+//     if(prevProps.openDeleteDialog !== nextProps.openDeleteDialog) {
+//       return true
+//     }
+//     return false
+//   })
 
 export default withStyles(styles)(MiniPalette);
